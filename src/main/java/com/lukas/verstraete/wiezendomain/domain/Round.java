@@ -3,9 +3,11 @@ package com.lukas.verstraete.wiezendomain.domain;
 import com.lukas.verstraete.wiezendomain.domain.gametypes.GameType;
 import java.io.Serializable;
 import java.util.Map;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity
 public class Round implements Serializable {
     
     @Id

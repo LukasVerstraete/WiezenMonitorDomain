@@ -2,11 +2,12 @@ package com.lukas.verstraete.wiezendomain.domain.gametypes;
 
 import com.lukas.verstraete.wiezendomain.domain.Player;
 import com.lukas.verstraete.wiezendomain.domain.Score;
+import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 
 
-public abstract class GameType {
+public abstract class GameType implements Serializable {
     protected List<Player> players;
     protected List<Player> opponents;
     

@@ -3,9 +3,11 @@ package com.lukas.verstraete.wiezendomain.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity
 public class Game implements Serializable{
     
     public enum GameState
