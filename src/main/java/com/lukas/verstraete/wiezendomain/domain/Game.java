@@ -3,6 +3,7 @@ package com.lukas.verstraete.wiezendomain.domain;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -85,26 +86,29 @@ public class Game implements Serializable{
     
     public void newRound(Round round)
     {
-        if(state == GameState.STARTING)
+        if(state == GameState.STARTING && players.size() >= 4)
         {
             currentRound = round;
             state = GameState.STARTED;
         }
     }
     
-    public void endRound()
+    public Map<Player,Score> endRound(int wins)
     {
         if(state == GameState.STARTED)
         {
             state = GameState.STARTING;
             rounds.add(currentRound);
+            Map<Player,Score> scores = currentRound.getScores(wins);
             currentRound = null;
+            return scores;
         }
+        return null;
     }
     
     public void endGame()
     {
-        endRound();
+        currentRound = null;
         state = GameState.FINISHED;
     }
 }

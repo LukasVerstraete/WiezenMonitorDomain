@@ -5,9 +5,11 @@ import com.lukas.verstraete.wiezendomain.db.DatabaseFactory;
 import com.lukas.verstraete.wiezendomain.domain.Game;
 import com.lukas.verstraete.wiezendomain.domain.Player;
 import com.lukas.verstraete.wiezendomain.domain.Round;
+import com.lukas.verstraete.wiezendomain.domain.Score;
 import com.lukas.verstraete.wiezendomain.util.MemoryLocation;
 import com.lukas.verstraete.wiezendomain.util.ServiceException;
 import java.util.List;
+import java.util.Map;
 
 public class GameService
 {
@@ -35,21 +37,65 @@ public class GameService
         }
     }
     
-    public void addPlayerToGame(long id, Player player)
+    public void addPlayerToGame(long id, Player player) throws ServiceException
     {
         try
         {
-            Game game = get(id);
+            Game game = getGame(id);
             game.addPlayer(player);
-            update(game);
+            updateGame(game);
         }
         catch(Exception e)
         {
-            
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+    
+    public void startRound(long id, Round round) throws ServiceException
+    {
+        try
+        {
+            Game game = getGame(id);
+            game.newRound(round);
+            updateGame(game);
+        }
+        catch(Exception e)
+        {
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+    
+    public Map<Player,Score> endRound(long id, int wins) throws ServiceException
+    {
+        try
+        {
+            Map<Player,Score> scores;
+            Game game = getGame(id);
+            scores = game.endRound(wins);
+            updateGame(game);
+            return scores;
+        }
+        catch(Exception e)
+        {
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+    
+    public void endGame(long id) throws ServiceException
+    {
+        try
+        {
+            Game game = getGame(id);
+            game.endGame();
+            updateGame(game);
+        }
+        catch(Exception e)
+        {
+            throw new ServiceException(e.getMessage(), e);
         }
     }
 
-    public Game get(long id) throws ServiceException 
+    public Game getGame(long id) throws ServiceException 
     {
         try
         {
@@ -61,7 +107,7 @@ public class GameService
         }
     }
 
-    public List<Game> getAll() throws ServiceException
+    public List<Game> getAllGames() throws ServiceException
     {
         try
         {
@@ -73,7 +119,7 @@ public class GameService
         }
     }
 
-    public void update(Game game) throws ServiceException
+    public void updateGame(Game game) throws ServiceException
     {
         try{
             gameDatabase.update(game);
@@ -84,7 +130,7 @@ public class GameService
         }
     }
 
-    public void delete(Game game) throws ServiceException
+    public void deleteGame(Game game) throws ServiceException
     {
         try{
             gameDatabase.delete(game);
