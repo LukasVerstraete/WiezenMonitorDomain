@@ -22,32 +22,36 @@ public class RemoteGameDatabase implements Database<Game>
         factory = Persistence.createEntityManagerFactory(pu);
         entityManager = factory.createEntityManager();
         
-        Game game = new Game();
-        Player p1 = new Player();
-        p1.setUsername("Lukas");
-        Player p2 = new Player();
-        p2.setUsername("Cedric");
-        Player p3 = new Player();
-        p3.setUsername("Nico");
-        Player p4 = new Player();
-        p4.setUsername("Boubleize");
-        game.addPlayer(p1);
-        game.addPlayer(p2);
-        game.addPlayer(p3);
-        game.addPlayer(p4);
-        List<Player> players = new ArrayList<>();
-        players.add(p3);
-        players.add(p4);
-        List<Player> opponents = new ArrayList<>();
-        opponents.add(p1);
-        opponents.add(p2);
-        RoundFactory rFactory = new RoundFactory();
-        game.newRound(rFactory.createRound(RoundFactory.Type.TROEL, players, opponents));
-        game.endRound(9);
-        game.newRound(rFactory.createRound(RoundFactory.Type.SAMEN_10, players, opponents));
-        game.endRound(8);
-        game.endGame();
-        add(game);
+        //Creating dummy data.
+        
+//        Game game = new Game();
+//        Player p1 = new Player();
+//        p1.setUsername("Lukas");
+//        Player p2 = new Player();
+//        p2.setUsername("Cedric");
+//        Player p3 = new Player();
+//        p3.setUsername("Nico");
+//        Player p4 = new Player();
+//        p4.setUsername("Boubleize");
+//        game.addPlayer(p1);
+//        game.addPlayer(p2);
+//        game.addPlayer(p3);
+//        game.addPlayer(p4);
+//        List<Player> players = new ArrayList<>();
+//        players.add(p3);
+//        players.add(p4);
+//        List<Player> opponents = new ArrayList<>();
+//        opponents.add(p1);
+//        opponents.add(p2);
+//        RoundFactory rFactory = new RoundFactory();
+//        game.newRound(rFactory.createRound(RoundFactory.Type.TROEL, players, opponents));
+//        game.endRound(9);
+//        game.newRound(rFactory.createRound(RoundFactory.Type.SAMEN_10, players, opponents));
+//        game.endRound(8);
+//        game.endGame();
+//        add(game);
+        
+        /////////////////////////////////
     }
     
     @Override
