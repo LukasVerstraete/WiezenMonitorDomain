@@ -38,7 +38,7 @@ public class Main {
         opponents.add(player3);
         opponents.add(player4);
         
-        gameService.startRound(gameId, factory.createRound(RoundFactory.Type.PICCOLO, players, opponents));
+        gameService.startRound(gameId, factory.createRound(RoundFactory.Type.PICCOLO, players, opponents, gameService.getGame(gameId).getPlayers()));
         
         gameService.endRound(gameId, 0);
         
@@ -55,7 +55,6 @@ public class Main {
         player.setUsername("Lukas");
         player.setName("Lukas");
         player.setFamilyName("Verstraete");
-        player.setPassword("test");
         return player;
     }
 }

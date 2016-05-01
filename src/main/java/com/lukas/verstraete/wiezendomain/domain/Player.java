@@ -14,7 +14,6 @@ public class Player implements Serializable {
     private String username;
     private String name;
     private String familyName;
-    private String password;
     
     private Score score;
     
@@ -63,20 +62,16 @@ public class Player implements Serializable {
         this.familyName = familyName;
     }
 
-    public String getPassword() 
-    {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Score getScore() {
         return score;
     }
 
     public void setScore(Score score) {
         this.score = score;
+    }
+    
+    public String toString()
+    {
+        return "ID: " + id + "  username: " + username + "  name: " + name + "  lastname: " + familyName;
     }
 }
