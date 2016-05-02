@@ -53,8 +53,6 @@ public class Main {
     {
         Player player = new Player();
         player.setUsername("Lukas");
-        player.setName("Lukas");
-        player.setFamilyName("Verstraete");
         return player;
     }
 }

@@ -84,6 +84,16 @@ public class Game implements Serializable{
             players.add(player);
     }
     
+    public Player getPlayer(long id)
+    {
+        for(Player p : players)
+        {
+            if(p.getId() == id)
+                return p;
+        }
+        return null;
+    }
+    
     public void newRound(Round round)
     {
         if(state == GameState.STARTING && players.size() >= 4)

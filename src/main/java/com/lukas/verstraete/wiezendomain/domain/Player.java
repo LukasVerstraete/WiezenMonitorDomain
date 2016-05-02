@@ -12,8 +12,6 @@ public class Player implements Serializable {
     @GeneratedValue
     private long id;
     private String username;
-    private String name;
-    private String familyName;
     
     private Score score;
     
@@ -42,26 +40,6 @@ public class Player implements Serializable {
         this.username = username;
     }
 
-    public String getName() 
-    {
-        return name;
-    }
-
-    public void setName(String name) 
-    {
-        this.name = name;
-    }
-
-    public String getFamilyName() 
-    {
-        return familyName;
-    }
-
-    public void setFamilyName(String familyName) 
-    {
-        this.familyName = familyName;
-    }
-
     public Score getScore() {
         return score;
     }
@@ -72,6 +50,6 @@ public class Player implements Serializable {
     
     public String toString()
     {
-        return "ID: " + id + "  username: " + username + "  name: " + name + "  lastname: " + familyName;
+        return "ID: " + id + "  username: " + username;
     }
 }
