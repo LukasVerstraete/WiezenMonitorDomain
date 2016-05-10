@@ -33,11 +33,11 @@ public class DatabaseFactory {
     private Database getRemoteDatabase(Class type)
     {
         if(type.getCanonicalName().equals(Player.class.getCanonicalName()))
-            return new RemotePlayerDatabase("DomainMonitorPU");
+            return new RemotePlayerDatabase("WiezenDomainPU");
         else if(type.getCanonicalName().equals(Game.class.getCanonicalName()))
-            return new RemoteGameDatabase("DomainMonitorPU");
+            return new RemoteGameDatabase("WiezenDomainPU");
         else if(type.getCanonicalName().equals(Round.class.getCanonicalName()))
-            return new RemoteRoundDatabase("DomainMonitorPU");
+            return new RemoteRoundDatabase("WiezenDomainPU");
         else
             throw new DatabaseException("Undefined database classtype: " + type.getSimpleName());
     }

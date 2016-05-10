@@ -36,43 +36,43 @@ public class RoundFactory {
         switch(type)
         {
             case SAMEN_8:
-                return new Round(new GameType_Samen(players, opponents, 8), allPlayers);
+                return new Round(new GameType_Samen(8), allPlayers, players, opponents);
             case SAMEN_9:
-                return new Round(new GameType_Samen(players, opponents, 9), allPlayers);
+                return new Round(new GameType_Samen(9), allPlayers, players, opponents);
             case SAMEN_10:
-                return new Round(new GameType_Samen(players, opponents, 10), allPlayers);
+                return new Round(new GameType_Samen(10), allPlayers, players, opponents);
             case SAMEN_11:
-                return new Round(new GameType_Samen(players, opponents, 11), allPlayers);
+                return new Round(new GameType_Samen(11), allPlayers, players, opponents);
             case SAMEN_12:
-                return new Round(new GameType_Samen(players, opponents, 12), allPlayers);
+                return new Round(new GameType_Samen(12), allPlayers, players, opponents);
             case SAMEN_13:
-                return new Round(new GameType_Samen(players, opponents, 13), allPlayers);
+                return new Round(new GameType_Samen(13), allPlayers, players, opponents);
             case SOLO_6:
-                return new Round(new GameType_Solo(players, opponents, 6), allPlayers);
+                return new Round(new GameType_Solo(6), allPlayers, players, opponents);
             case SOLO_7:
-                return new Round(new GameType_Solo(players, opponents, 7), allPlayers);
+                return new Round(new GameType_Solo(7), allPlayers, players, opponents);
             case SOLO_8:
-                return new Round(new GameType_Solo(players, opponents, 8), allPlayers);
+                return new Round(new GameType_Solo(8), allPlayers, players, opponents);
             case KLEINE_MISERIE:
-                return new Round(new GameType_Miserie(players, opponents, 0, 18, 12, 18), allPlayers);
+                return new Round(new GameType_Miserie(0, 18, 12, 18), allPlayers, players, opponents);
             case PICCOLO:
-                return new Round(new GameType_Miserie(players, opponents, 1, 24, 16, 24), allPlayers);
+                return new Round(new GameType_Miserie(1, 24, 16, 24), allPlayers, players, opponents);
             case GROTE_MISERIE:
-                return new Round(new GameType_Miserie(players, opponents, 0, 36, 24, 36), allPlayers);
+                return new Round(new GameType_Miserie(0, 36, 24, 36), allPlayers, players, opponents);
             case BLOTE_MISERIE:
-                return new Round(new GameType_Miserie(players, opponents, 0, 75, 32, 48), allPlayers);
+                return new Round(new GameType_Miserie(0, 75, 32, 48), allPlayers, players, opponents);
             case TROEL:
-                return new Round(new GameType_Troel(players, opponents), allPlayers);
+                return new Round(new GameType_Troel(), allPlayers, players, opponents);
             case ABONDANCE_9:
-                return new Round(new GameType_Abondance(players, opponents, 9, 32, 21), allPlayers);
+                return new Round(new GameType_Abondance(9, 32, 21), allPlayers, players, opponents);
             case ABONDANCE_10:
-                return new Round(new GameType_Abondance(players, opponents, 10, 42, 25), allPlayers);
+                return new Round(new GameType_Abondance(10, 42, 25), allPlayers, players, opponents);
             case ABONDANCE_11:
-                return new Round(new GameType_Abondance(players, opponents, 11, 60, 27), allPlayers);
+                return new Round(new GameType_Abondance(11, 60, 27), allPlayers, players, opponents);
             case KLEINE_SOLOSLIM:
-                return new Round(new GameType_Abondance(players, opponents, 12, 100, 33), allPlayers);
+                return new Round(new GameType_Abondance(12, 100, 33), allPlayers, players, opponents);
             case GROTE_SOLOSLIM:
-                return new Round(new GameType_Abondance(players, opponents, 13, 200, 66), allPlayers);
+                return new Round(new GameType_Abondance(13, 200, 66), allPlayers, players, opponents);
         }
         return null;
     }

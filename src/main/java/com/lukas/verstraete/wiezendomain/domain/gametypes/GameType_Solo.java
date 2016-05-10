@@ -7,11 +7,12 @@ package com.lukas.verstraete.wiezendomain.domain.gametypes;
 
 import com.lukas.verstraete.wiezendomain.domain.Player;
 import com.lukas.verstraete.wiezendomain.domain.Score;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GameType_Solo extends GameType {
+public class GameType_Solo implements GameType, Serializable {
     
     protected int base_points = 12;
     protected int max_points = 21;
@@ -23,8 +24,7 @@ public class GameType_Solo extends GameType {
     protected int maxWins = 8;
     protected int goal;
     
-    public GameType_Solo(List<Player> players, List<Player> opponents, int goal) {
-        super(players, opponents);
+    public GameType_Solo(int goal) {
         setGoal(goal);
     }
     
@@ -36,7 +36,7 @@ public class GameType_Solo extends GameType {
     }
     
     @Override
-    public Map<Player, Score> getScores(int wins) {
+    public Map<Player, Score> getScores(List<Player> players, List<Player> opponents, int wins) {
         Score playersScore = new Score();
         Score opponentsScore = new Score();
         wins = wins < 0 ? 0 : wins;
@@ -49,12 +49,20 @@ public class GameType_Solo extends GameType {
         }
         else
         {
-            playersScore.subtract(base_points_lose + (goal - wins) * increment);
-            opponentsScore.add(base_points_opponents + (goal - wins) * increment_opponents);
+            playersScore.subtract(base_points_lose + ((goal - wins) - 1) * increment);
+            opponentsScore.add(base_points_opponents + ((goal - wins) - 1) * increment_opponents);
         }
         HashMap<Player,Score> scores = new HashMap<>();
-        for(Player p : players) scores.put(p, playersScore);
-        for(Player p : opponents) scores.put(p, opponentsScore);
+        System.out.println("player (" + players.size() + "): " + playersScore.getPoints());
+        System.out.println("opponents (" + opponents.size() + "): " + opponentsScore.getPoints());
+        for(Player p : players)
+        { 
+            scores.put(p, playersScore);
+        }
+        for(Player p : opponents) 
+        { 
+            scores.put(p, opponentsScore);
+        }
         return scores;
     }
     

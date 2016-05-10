@@ -2,19 +2,19 @@ package com.lukas.verstraete.wiezendomain.domain.gametypes;
 
 import com.lukas.verstraete.wiezendomain.domain.Player;
 import com.lukas.verstraete.wiezendomain.domain.Score;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GameType_Miserie extends GameType {
+public class GameType_Miserie implements GameType,Serializable {
 
     protected int goal;
     protected int points_max;
     protected int points_opponent_one;
     protected int points_opponent_two;
     
-    public GameType_Miserie(List<Player> players, List<Player> opponents, int allowedWins, int points, int pointsOpponentOne, int pointsOpponentTwo) {
-        super(players, opponents);
+    public GameType_Miserie(int allowedWins, int points, int pointsOpponentOne, int pointsOpponentTwo) {
         setGoals(allowedWins);
         setPoints_max(points);
         setPoints_opponent_one(points_opponent_one);
@@ -39,7 +39,7 @@ public class GameType_Miserie extends GameType {
     }
 
     @Override
-    public Map<Player, Score> getScores(int wins) {
+    public Map<Player, Score> getScores(List<Player> players, List<Player> opponents, int wins) {
         Score playersScore = new Score();
         Score opponentsScore = new Score();
         wins = wins < 0 ? 0 : wins;

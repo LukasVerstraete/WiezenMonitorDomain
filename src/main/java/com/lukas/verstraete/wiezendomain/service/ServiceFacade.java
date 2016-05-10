@@ -88,6 +88,11 @@ public class ServiceFacade {
         gameService.deleteGame(game);
     }
     
+    public void deleteRound(long gameId, long roundId)
+    {
+        gameService.deleteround(gameId, roundId);
+    }
+    
     public void closeConnection() throws ServiceException
     {
         playerService.closeConnection();

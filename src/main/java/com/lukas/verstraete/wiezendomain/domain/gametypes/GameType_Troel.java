@@ -2,22 +2,22 @@ package com.lukas.verstraete.wiezendomain.domain.gametypes;
 
 import com.lukas.verstraete.wiezendomain.domain.Player;
 import com.lukas.verstraete.wiezendomain.domain.Score;
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class GameType_Troel extends GameType {
+public class GameType_Troel implements GameType, Serializable {
     
     protected int goal = 9;
     protected int points = 16;
     protected int points_double = 30;
     
-    public GameType_Troel(List<Player> players, List<Player> opponents) {
-        super(players, opponents);
+    public GameType_Troel() {
     }
 
     @Override
-    public Map<Player, Score> getScores(int wins) {
+    public Map<Player, Score> getScores(List<Player> players, List<Player> opponents, int wins) {
         Score playersScore = new Score();
         Score opponentsScore = new Score();
         wins = wins < 0 ? 0 : wins;

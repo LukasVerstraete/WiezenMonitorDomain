@@ -110,10 +110,24 @@ public class Game implements Serializable{
             state = GameState.STARTING;
             rounds.add(currentRound);
             Map<Player,Score> scores = currentRound.getScores(wins);
+            givePlayerScores(scores);
             currentRound = null;
             return scores;
         }
         return null;
+    }
+    
+    public void deleteRound(Round round)
+    {
+        rounds.remove(round);
+    }
+    
+    private void givePlayerScores(Map<Player,Score> scores)
+    {
+        for(Player p : players)
+        {
+            p.getScore().add(scores.get(p));
+        }
     }
     
     public void endGame()

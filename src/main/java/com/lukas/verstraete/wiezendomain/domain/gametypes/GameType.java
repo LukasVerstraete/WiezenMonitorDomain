@@ -7,31 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public abstract class GameType implements Serializable {
-    protected List<Player> players;
-    protected List<Player> opponents;
+public interface GameType {
     
-    public GameType(List<Player> players, List<Player> opponents)
-    {
-        setPlayers(players);
-        setOpponents(opponents);
-    }
-
-    public List<Player> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(List<Player> players) {
-        this.players = players;
-    }
-
-    public List<Player> getOpponents() {
-        return opponents;
-    }
-
-    public void setOpponents(List<Player> opponents) {
-        this.opponents = opponents;
-    }
-    
-    public abstract Map<Player,Score> getScores(int wins);
+    public abstract Map<Player,Score> getScores(List<Player> players, List<Player> opponents, int wins);
 }

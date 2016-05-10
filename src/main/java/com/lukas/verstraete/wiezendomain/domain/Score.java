@@ -1,9 +1,11 @@
 package com.lukas.verstraete.wiezendomain.domain;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@Entity
 public class Score implements Serializable {
     
     @Id
@@ -33,22 +35,22 @@ public class Score implements Serializable {
     
     public int add(int points)
     {
-        return this.points + points;
+        return this.points += points;
     }
     
     public int subtract(int points)
     {
-        return this.points - points;
+        return this.points -= points;
     }
     
     public int multiply(int points)
     {
-        return this.points * points;
+        return this.points *= points;
     }
     
     public int divide(int points)
     {
-        return this.points / points;
+        return this.points /= points;
     }
     
     public int add(Score score)

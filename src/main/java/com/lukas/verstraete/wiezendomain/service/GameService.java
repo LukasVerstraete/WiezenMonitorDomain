@@ -132,8 +132,19 @@ public class GameService
 
     public void deleteGame(Game game) throws ServiceException
     {
-        try{
+        try {
             gameDatabase.delete(game);
+        } 
+        catch(Exception e)
+        {
+            throw new ServiceException(e.getMessage(), e);
+        }
+    }
+    
+    public void deleteround(long gameId, long roundId)
+    {
+        try {
+            getGame(gameId).deleteRound(roundDatabase.get(roundId));
         } 
         catch(Exception e)
         {
